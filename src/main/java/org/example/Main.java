@@ -12,6 +12,12 @@ public class Main {
         } catch (LimitException e) {
             System.out.println(e.getMessage());
             System.out.println("Remaining amount: " + e.getRemainingAmount());
+
+            try {
+                account.withDraw(e.getRemainingAmount());
+            } catch (LimitException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
 
     }
